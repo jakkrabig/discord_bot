@@ -35,7 +35,8 @@ PREFIX=YOUR_COMMAND_PREFIX
 $ node index.js
 ```
 
-## Compile a code in chat room
+## Usage
+### Compile a code in chat room
 >now only support `golang`
 - Try input chat message 
 <img src="https://i.imgur.com/BCsQfon.png" title="Sample code in chat" alt="Sample code in chat">
