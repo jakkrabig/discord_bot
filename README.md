@@ -26,11 +26,11 @@ $ npm install
 - Create file `.env` and declare variable
 
 ```
-// Discord
+# Discord
 TOKEN=YOUR_BOT_TOKEN
 PREFIX=YOUR_COMMAND_PREFIX
 
-// Jdoodle online compiler
+# Jdoodle online compiler
 COMPILER_CLIENT_ID=YOUR_CLIENT_ID
 COMPILER_CLIENT_SECRET=YOUR_CLIENT_SECRET
 COMPILER_LANGUAGE=LANGUAGE_CODE
