@@ -26,20 +26,24 @@ client.on('ready', () => {
 client.on('message', async message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-    const args = message.content.slice(prefix.length).trim().split(/ +/);
-    const command = args.shift().toLowerCase();
+    let argString = message.content.slice(prefix.length);
+    let args = argString.trim().replace(/\n/g, " ").split(" ")
+
+    const command = args[0];
+
+    argString = argString.slice(prefix.length + command.length);
 
     if (command === 'ping') {
-        client.commands.get('ping').execute(message, args);
+        client.commands.get('ping').execute(message, argString);
     } else if (command === 'swear') {
-        client.commands.get('swear').execute(message, args);
+        client.commands.get('swear').execute(message, argString);
     } else if (command === 'blame') {
         if (message.mentions.users.first().username.toLowerCase() === client.user.username.toLowerCase()) {
             message.channel.send(`Don't blame me.`);
             return;
         }
 
-        client.commands.get('swear').execute(message, args);
+        client.commands.get('blame').execute(message, argString);
     } else if (command === 'kick') {
         if (message.mentions.users.size) {
             const taggedUser = message.mentions.users.first();
@@ -47,5 +51,18 @@ client.on('message', async message => {
         } else {
             message.reply('Please tag a valid user!');
         }
+    } else if (command === "compile") {
+        let codeBlocks = argString.split("```");
+        if (argString.trim() === "" || codeBlocks.length != 3) {
+            message.reply('Please insert code in code block.');
+            return;
+        }
+
+        let code = codeBlocks[1];
+        let lang = code.trim().replace(/\n/g, " ").split(" ")[0];
+        code = code.slice(lang.length);
+
+        message.reply(`${lang}`);
+        client.commands.get('compile').execute(message, code);
     }
 });
