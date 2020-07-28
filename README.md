@@ -36,7 +36,11 @@ $ node index.js
 ```
 
 ## Usage
+
 ### Compile a code in chat room
+
 >now only support `golang`
+
 - Try input chat message by code block 
+
 <img src="https://i.imgur.com/BCsQfon.png" title="Sample code in chat" alt="Sample code in chat">
