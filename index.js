@@ -52,16 +52,18 @@ client.on('message', async message => {
             message.reply('Please tag a valid user!');
         }
     } else if (command === "compile") {
-        let codeBlocks = argString.split("```");
-        if (argString.trim() === "" || codeBlocks.length != 3) {
+        let codeIndex = argString.indexOf("`");
+        let codeLastIndex = argString.lastIndexOf("`");
+        let code = argString.slice(codeIndex + 3, codeLastIndex - 3)
+        let lang = code.trim().replace(/\n/g, " ").split(" ")[0];
+        code = code.slice(lang.length);
+
+        if (argString.trim() === "" || code.length == 0) {
             message.reply('Please insert code in code block.');
             return;
         }
 
-        let code = codeBlocks[1];
-        let lang = code.trim().replace(/\n/g, " ").split(" ")[0];
-        code = code.slice(lang.length);
-
+        
         message.reply(`${lang}`);
         client.commands.get('compile').execute(message, code);
     }
