@@ -23,7 +23,7 @@ $ cd discord_bot
 $ npm install
 ```
 
-- Create file `.env` and declare variable below
+- Create file `.env` and declare variable
 
 ```
 TOKEN=YOUR_BOT_TOKEN
@@ -34,3 +34,8 @@ PREFIX=YOUR_COMMAND_PREFIX
 ```shell
 $ node index.js
 ```
+
+## Compile a code in chat room
+>now only support `golang`
+- Try input chat message 
+<img src="https://i.imgur.com/BCsQfon.png" title="Sample code in chat" alt="Sample code in chat">
